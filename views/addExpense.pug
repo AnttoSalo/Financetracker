@@ -1,0 +1,16 @@
+
+extends layout
+
+block content
+  h1 Add Expense
+  form(action="/add-expense" method="POST")
+    .mb-3
+      label.form-label Expense Amount
+      input.form-control(type="number" step="0.01" name="amount" required)
+    .mb-3
+      label.form-label Category
+      input.form-control(type="text" name="category" required)
+    .mb-3
+      label.form-label Note
+      input.form-control(type="text" name="note")
+    button.btn.btn-danger(type="submit") Add Expense

@@ -1,0 +1,29 @@
+
+extends layout
+
+block content
+  h1 Overview
+  canvas#myChart(width="400" height="400")
+
+  script(src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js")
+  script.
+    const categoryData = !{JSON.stringify(categoryTotals)};
+    const labels = Object.keys(categoryData);
+    const data = Object.values(categoryData);
+
+    new Chart(document.getElementById('myChart'), {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            // ...add more colors if needed...
+          ]
+        }]
+      }
+    });

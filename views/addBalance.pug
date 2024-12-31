@@ -1,0 +1,10 @@
+
+extends layout
+
+block content
+  h1 Add Balance
+  form(action="/add-balance" method="POST")
+    .mb-3
+      label.form-label For how much?
+      input.form-control(type="number" step="0.01" name="amount" required)
+    button.btn.btn-primary(type="submit") Add

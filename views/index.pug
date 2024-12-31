@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1.display-3.mb-4 Balance: $#{balance}
+
+  .d-flex.gap-3.mb-4
+    a.btn.btn-success.btn-lg.w-50(href="/add-balance") +
+    a.btn.btn-danger.btn-lg.w-50(href="/add-expense") –
+
+  if expenses && expenses.length
+    h3 Expenses
+    table.table.mt-3
+      thead
+        tr
+          th Amount
+          th Category
+          th Note
+      tbody
+        each expense in expenses
+          if expense.category !== 'Balance Addition'
+            tr
+              td $#{expense.amount}
+              td #{expense.category}
+              td #{expense.note}
+  else
+    p No expenses yet.
